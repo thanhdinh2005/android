@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "chat-app-firebase-backend"
+  },
+  "targets": {},
+  "etags": {}
+}
