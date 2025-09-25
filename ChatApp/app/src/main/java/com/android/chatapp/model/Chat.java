@@ -18,4 +18,44 @@ public class Chat {
         this.lastTimestamp = lastTimestamp;
         this.unreadCount = 0;
     }
+
+    public String getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
+    }
+
+    public List<String> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<String> participants) {
+        this.participants = participants;
+    }
+
+    public String getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(String lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+
+    public long getLastTimestamp() {
+        return lastTimestamp;
+    }
+
+    public void setLastTimestamp(long lastTimestamp) {
+        this.lastTimestamp = lastTimestamp;
+    }
+
+    public int getUnreadCount() {
+        return unreadCount;
+    }
+
+    public void setUnreadCount(int unreadCount) {
+        this.unreadCount = unreadCount;
+    }
 }
