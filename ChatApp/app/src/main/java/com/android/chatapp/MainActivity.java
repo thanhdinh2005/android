@@ -1,10 +1,15 @@
 package com.android.chatapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.chatapp.discovery.ui.HomeActivity;
+import com.android.chatapp.util.DataSeeder;
+import com.android.chatapp.util.EmulatorConnection;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,35 +28,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        auth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        if (!EmulatorConnection.connect() || !EmulatorConnection.signInWithTestAccount("lan@gmail.com", "123456")){
+            Log.d(TAG, "Emulator not connected");
+            return;
+        }
 
-        auth.useEmulator("10.0.2.2", 9099);
-        db.useEmulator("10.0.2.2", 8080);
+        Button btnGoHome = findViewById(R.id.btnGoHome);
+        btnGoHome.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+        });
 
-        Log.d(TAG, "Current user: " +
-                (auth.getCurrentUser() != null ? auth.getCurrentUser().getEmail() : "null"));
-
-        // Test: tạo user mới
-        String email = "user" + System.currentTimeMillis() + "@example.com";
-        String password = "123456";
-
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = auth.getCurrentUser();
-                        Log.d(TAG, "Đăng ký thành công: " + user.getEmail() + " - UID: " + user.getUid());
-
-                        // Test Firestore: lưu 1 document
-                        db.collection("users")
-                                .document(user.getUid())
-                                .set(Collections.singletonMap("email", email))
-                                .addOnSuccessListener(aVoid -> Log.d(TAG, "Lưu Firestore OK"))
-                                .addOnFailureListener(e -> Log.e(TAG, "Lỗi Firestore", e));
-
-                    } else {
-                        Log.e(TAG, "Lỗi đăng ký", task.getException());
-                    }
-                });
     }
 }

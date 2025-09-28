@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Màu chính (header, nav) -->
+    <color name="colorPrimary">#0084FF</color> <!-- xanh Messenger -->
+    <color name="colorPrimaryDark">#006FD6</color>
+    <color name="colorAccent">#0084FF</color>
+
+    <!-- Text -->
+    <color name="textPrimary">#000000</color>
+    <color name="textSecondary">#606770</color> <!-- xám nhạt Messenger -->
+    <color name="textTimestamp">#90949C</color> <!-- xám mờ cho thời gian -->
+
+    <!-- Online dot -->
+    <color name="onlineGreen">#31A24C</color>
+
+    <!-- Nền item khi click -->
+    <color name="itemBackground">#FFFFFF</color>
+    <color name="itemBackgroundPressed">#F0F2F5</color>
+
+    <!-- Thanh nav -->
+    <color name="navBackground">#FFFFFF</color>
+    <color name="navIconActive">#0084FF</color>
+    <color name="navIconInactive">#8A8D91</color>
 </resources>

@@ -19,6 +19,14 @@ public class Chat {
         this.unreadCount = 0;
     }
 
+    public <T> Chat(String chatId, List<T> list, String s, long l, int i) {
+        this.chatId = chatId;
+        this.participants = (List<String>) list;
+        this.lastMessage = s;
+        this.lastTimestamp = l;
+        this.unreadCount = i;
+    }
+
     public String getChatId() {
         return chatId;
     }

@@ -1,33 +1,25 @@
 package com.android.chatapp.discovery.repository;
 
-import android.util.Log;
-
 import com.android.chatapp.model.User;
-import com.android.chatapp.util.EmulatorConnection;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class DiscoveryRepository {
+public class UserRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
-    public DiscoveryRepository(){
-        // Delete when deploy on server
-//        db.useEmulator("10.0.2.2", 8080);
-//        EmulatorConnection.connect();
+    public UserRepository(){
     }
 
 
 
+
+
+
+
+    // UC10: Searching user by username or email
     public void searchUsers(String query, Callback<List<User>> callback) {
         db.collection("users")
                 .whereGreaterThanOrEqualTo("username", query)
@@ -63,6 +55,9 @@ public class DiscoveryRepository {
                 });
     }
 
+
+
+    // UC13: Listen to online users
     public ListenerRegistration listenOnlineUsers(Callback<List<User>> callback) {
         return db.collection("users")
                 .whereEqualTo("online", true)
@@ -80,6 +75,7 @@ public class DiscoveryRepository {
                 });
     }
 
+    // UC10: Listen to all users except the current user
     public ListenerRegistration listenAllUsersExcept(String currentUid, Callback<List<User>> callback) {
         return db.collection("users")
                 .addSnapshotListener((querySnapshot, e) -> {

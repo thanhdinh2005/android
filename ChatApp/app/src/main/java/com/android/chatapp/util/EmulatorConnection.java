@@ -18,14 +18,18 @@ public class EmulatorConnection {
         try {
             FirebaseAuth.getInstance().useEmulator(HOST, AUTH_PORT);
             FirebaseFirestore.getInstance().useEmulator(HOST, FIRESTORE_PORT);
-            // FirebaseStorage.getInstance().useEmulator(HOST, STORAGE_PORT);
-            Log.d("EmulatorConnection", "Connected to Firebase Emulator Suite");
-        } catch (Exception e){
+
+            FirebaseFirestore.getInstance().collection("test").get()
+                    .addOnSuccessListener(snap -> Log.d("EmulatorConnection", "Emulator running"))
+                    .addOnFailureListener(e -> Log.e("EmulatorConnection", "Emulator not running", e));
+
+            return true;
+        } catch (Exception e) {
             Log.e("EmulatorConnection", "Failed to connect to Firebase Emulator Suite", e);
             return false;
         }
-        return true;
     }
+
 
     public static boolean signInWithTestAccount(String email, String password){
         try {
