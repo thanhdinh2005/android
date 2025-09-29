@@ -12,6 +12,7 @@
 
     <!-- Online dot -->
     <color name="onlineGreen">#31A24C</color>
+    <color name="light_gray">#E0E0E0</color>
 
     <!-- Nền item khi click -->
     <color name="itemBackground">#FFFFFF</color>

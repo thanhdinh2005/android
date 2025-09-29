@@ -7,6 +7,7 @@
 
     <EditText
         android:id="@+id/searchEditText"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Search by username or email"
@@ -14,6 +15,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userRecyclerView"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
