@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.chatapp.R;
 import com.android.chatapp.discovery.repository.Callback;
+import com.android.chatapp.discovery.repository.UserFilter;
 import com.android.chatapp.discovery.repository.UserRepository;
+import com.android.chatapp.discovery.service.SearchService;
 import com.android.chatapp.discovery.ui.adapter.UserAdapter;
 import com.android.chatapp.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +31,7 @@ public class SearchFragment extends Fragment {
     private EditText etSearch;
     private RecyclerView rvSearchResults;
     private UserAdapter userAdapter;
-    private UserRepository userRepository;
+    private SearchService searchService;
 
     @Nullable
     @Override
@@ -38,20 +40,26 @@ public class SearchFragment extends Fragment {
 
         etSearch = view.findViewById(R.id.etSearch);
         rvSearchResults = view.findViewById(R.id.rvSearchResults);
-        userRepository = new UserRepository();
+
+        UserRepository userRepository = new UserRepository();
+        UserFilter userFilter = new UserFilter();
+        searchService = new SearchService(userRepository, userFilter);
 
         rvSearchResults.setLayoutManager(new LinearLayoutManager(getContext()));
-        userAdapter = new UserAdapter(new ArrayList<>(), user -> {
-
-            // Open activity chat
+        userAdapter = new UserAdapter(getContext(), new ArrayList<>(), user -> {
             Toast.makeText(getContext(), "Clicked: " + user.getUsername(), Toast.LENGTH_SHORT).show();
         });
         rvSearchResults.setAdapter(userAdapter);
 
         etSearch.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            @Override public void afterTextChanged(Editable s) {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 String query = s.toString().trim();
                 if (!query.isEmpty()) {
                     searchUsers(query);
@@ -66,8 +74,7 @@ public class SearchFragment extends Fragment {
 
     private void searchUsers(String query) {
         String currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        userRepository.searchUsers(query, currentUid, new Callback<List<User>>() {
+        searchService.searchUsers(query, currentUid, new Callback<List<User>>() {
             @Override
             public void onSuccess(List<User> result) {
                 userAdapter.setUsers(result);
@@ -79,6 +86,4 @@ public class SearchFragment extends Fragment {
             }
         });
     }
-
 }
-

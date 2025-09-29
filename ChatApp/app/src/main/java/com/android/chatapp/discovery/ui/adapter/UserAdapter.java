@@ -1,5 +1,6 @@
 package com.android.chatapp.discovery.ui.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.chatapp.R;
 import com.android.chatapp.model.User;
+import com.android.chatapp.util.ImageLoader;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -18,12 +20,14 @@ import java.util.List;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
     private List<User> users;
     private final OnUserClickListener listener;
+    private final Context context;
 
     public interface OnUserClickListener {
         void onUserClick(User user);
     }
 
-    public UserAdapter(List<User> users, OnUserClickListener listener) {
+    public UserAdapter(Context context, List<User> users, OnUserClickListener listener) {
+        this.context = context;
         this.users = users;
         this.listener = listener;
     }
@@ -44,12 +48,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = users.get(position);
         holder.tvName.setText(user.getUsername());
-        Glide.with(holder.itemView.getContext())
-                .load(user.getPhotoUrl())
-                .placeholder(R.drawable.ic_avatar)
-                .circleCrop()
-                .into(holder.ivAvatar);
-
+        ImageLoader.loadImage(context, user.getPhotoUrl(), holder.ivAvatar, R.drawable.ic_avatar);
         holder.itemView.setOnClickListener(v -> listener.onUserClick(user));
     }
 
@@ -69,4 +68,3 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
     }
 }
-
