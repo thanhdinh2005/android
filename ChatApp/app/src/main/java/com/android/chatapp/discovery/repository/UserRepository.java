@@ -13,14 +13,8 @@ public class UserRepository {
     public UserRepository(){
     }
 
-
-
-
-
-
-
     // UC10: Searching user by username or email
-    public void searchUsers(String query, Callback<List<User>> callback) {
+    public void searchUsers(String query, String currentUid, Callback<List<User>> callback) {
         db.collection("users")
                 .whereGreaterThanOrEqualTo("username", query)
                 .whereLessThanOrEqualTo("username", query + "\uf8ff")
@@ -40,7 +34,16 @@ public class UserRepository {
                                                 users.add(user);
                                             }
                                         }
-                                        callback.onSuccess(users);
+
+                                        // 🔹 Lọc bỏ bản thân
+                                        List<User> filtered = new ArrayList<>();
+                                        for (User u : users) {
+                                            if (!u.getUid().equals(currentUid)) {
+                                                filtered.add(u);
+                                            }
+                                        }
+
+                                        callback.onSuccess(filtered);
                                     } else {
                                         callback.onError(emailTask.getException() != null
                                                 ? emailTask.getException().getMessage()
@@ -54,6 +57,7 @@ public class UserRepository {
                     }
                 });
     }
+
 
 
 

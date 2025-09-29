@@ -19,7 +19,6 @@ public class DataSeeder {
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    // Gọi hàm này trong MainActivity sau khi connect emulator
     public void seedAll() {
         createSampleUsers();
     }
@@ -67,7 +66,6 @@ public class DataSeeder {
             snapshot.getDocuments().forEach(doc -> userIds.add(doc.getId()));
 
             if (userIds.size() >= 2) {
-                // Chat giữa user0 và user1
                 String chatId = userIds.get(0) + "_" + userIds.get(1);
                 Chat chat = new Chat(chatId,
                         Arrays.asList(userIds.get(0), userIds.get(1)),
@@ -83,7 +81,6 @@ public class DataSeeder {
             }
 
             if (userIds.size() >= 3) {
-                // Chat giữa user1 và user2
                 String chatId2 = userIds.get(1) + "_" + userIds.get(2);
                 Chat chat2 = new Chat(chatId2,
                         Arrays.asList(userIds.get(1), userIds.get(2)),
@@ -115,7 +112,6 @@ public class DataSeeder {
             Message msg = new Message();
             msg.setMessageId(msgId);
 
-            // xen kẽ sender/receiver
             if (i % 2 == 0) {
                 msg.setSenderId(userA);
                 msg.setReceiverId(userB);
