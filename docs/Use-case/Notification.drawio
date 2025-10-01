@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
+  <diagram name="Page-1" id="KCE2GymwQ7eaOI1FGNmd">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;startFill=0;" edge="1" parent="1" source="3Xoalq3VqeEcLa8LHWFX-1" target="3Xoalq3VqeEcLa8LHWFX-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-1" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="270" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-2" value="Notification" style="swimlane;startSize=0;labelBackgroundColor=default;labelBorderColor=default;" vertex="1" parent="1">
+          <mxGeometry x="270" y="110" width="360" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-8" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=12 12;endArrow=open;endFill=0;" edge="1" parent="3Xoalq3VqeEcLa8LHWFX-2" source="3Xoalq3VqeEcLa8LHWFX-4" target="3Xoalq3VqeEcLa8LHWFX-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-11" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3Xoalq3VqeEcLa8LHWFX-8">
+          <mxGeometry x="-0.0489" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;dashed=1;dashPattern=12 12;endArrow=open;endFill=0;" edge="1" parent="3Xoalq3VqeEcLa8LHWFX-2" source="3Xoalq3VqeEcLa8LHWFX-4" target="3Xoalq3VqeEcLa8LHWFX-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-10" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3Xoalq3VqeEcLa8LHWFX-9">
+          <mxGeometry x="-0.1149" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-13" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;dashed=1;dashPattern=12 12;endArrow=open;endFill=0;" edge="1" parent="3Xoalq3VqeEcLa8LHWFX-2" source="3Xoalq3VqeEcLa8LHWFX-4" target="3Xoalq3VqeEcLa8LHWFX-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-14" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3Xoalq3VqeEcLa8LHWFX-13">
+          <mxGeometry x="-0.041" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-4" value="UC 4.1 Thông báo" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="3Xoalq3VqeEcLa8LHWFX-2">
+          <mxGeometry x="35" y="150" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-6" value="Thay đổi mật khẩu" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="3Xoalq3VqeEcLa8LHWFX-2">
+          <mxGeometry x="190" y="30" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-7" value="Nhận tin nhắn mới ngoài ứng dụng" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="3Xoalq3VqeEcLa8LHWFX-2">
+          <mxGeometry x="220" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3Xoalq3VqeEcLa8LHWFX-12" value="Đăng ký thành công" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="3Xoalq3VqeEcLa8LHWFX-2">
+          <mxGeometry x="155" y="350" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
