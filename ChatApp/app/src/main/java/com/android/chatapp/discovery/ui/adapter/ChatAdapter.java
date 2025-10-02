@@ -18,7 +18,6 @@ import com.android.chatapp.model.Chat;
 import com.android.chatapp.model.User;
 import com.android.chatapp.util.ImageLoader;
 import com.android.chatapp.util.TimeFormatter;
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 

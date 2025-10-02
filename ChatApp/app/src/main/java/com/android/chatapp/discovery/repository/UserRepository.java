@@ -1,5 +1,6 @@
 package com.android.chatapp.discovery.repository;
 
+import com.android.chatapp.discovery.service.UserService;
 import com.android.chatapp.model.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
@@ -7,40 +8,38 @@ import com.google.firebase.firestore.ListenerRegistration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepository {
-    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+import java.util.ArrayList;
+import java.util.List;
 
-    public UserRepository() {
+public class UserRepository {
+    private final UserService userService;
+
+    public UserRepository(UserService userService) {
+        this.userService = userService;
     }
 
-    public void searchUsers(String query, Callback<List<User>> callback) {
-        db.collection("users")
-                .whereGreaterThanOrEqualTo("username", query)
-                .whereLessThanOrEqualTo("username", query + "\uf8ff")
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null) {
-                        List<User> users = new ArrayList<>(task.getResult().toObjects(User.class));
+    public void searchUsers(String query, String currentUid, Callback<List<User>> callback) {
+        userService.searchUsers(query, new Callback<List<User>>() {
+            @Override
+            public void onSuccess(List<User> users) {
+                List<User> filteredUsers = filterUsers(users, currentUid);
+                callback.onSuccess(filteredUsers);
+            }
 
-                        db.collection("users")
-                                .whereGreaterThanOrEqualTo("email", query.toLowerCase())
-                                .whereLessThanOrEqualTo("email", query.toLowerCase() + "\uf8ff")
-                                .get()
-                                .addOnCompleteListener(emailTask -> {
-                                    if (emailTask.isSuccessful() && emailTask.getResult() != null) {
-                                        users.addAll(emailTask.getResult().toObjects(User.class));
-                                        callback.onSuccess(users);
-                                    } else {
-                                        callback.onError(emailTask.getException() != null
-                                                ? emailTask.getException().getMessage()
-                                                : "Email query failed");
-                                    }
-                                });
-                    } else {
-                        callback.onError(task.getException() != null
-                                ? task.getException().getMessage()
-                                : "Username query failed");
-                    }
-                });
+            @Override
+            public void onError(String error) {
+                callback.onError(error);
+            }
+        });
+    }
+
+    private List<User> filterUsers(List<User> users, String currentUid) {
+        List<User> filtered = new ArrayList<>();
+        for (User user : users) {
+            if (user != null && !user.getUid().equals(currentUid)) {
+                filtered.add(user);
+            }
+        }
+        return filtered;
     }
 }

@@ -17,24 +17,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.chatapp.R;
 import com.android.chatapp.discovery.repository.Callback;
 import com.android.chatapp.discovery.repository.ChatRepository;
+import com.android.chatapp.discovery.service.ChatService;
 import com.android.chatapp.discovery.service.UserService;
+import com.android.chatapp.discovery.ui.HomeActivity;
 import com.android.chatapp.discovery.ui.adapter.ChatAdapter;
 import com.android.chatapp.model.Chat;
 import com.android.chatapp.model.User;
+import com.android.chatapp.notification.service.INotificationService;
 import com.android.chatapp.util.ImageLoader;
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.ListenerRegistration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewChats;
     private ChatAdapter chatAdapter;
-    private ChatRepository chatRepository;
     private UserService userService;
+    private ChatService chatService;
+    private ChatRepository chatRepository;
     private ListenerRegistration chatListener;
     private String currentUid;
     private ImageView ivCurrentUserAvatar;
@@ -45,6 +49,9 @@ public class HomeFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        INotificationService notificationService = ((HomeActivity) requireActivity()).getNotificationService();
+        notificationService.subscribeToTopic("home");
+
         recyclerViewChats = view.findViewById(R.id.recyclerViewChats);
         recyclerViewChats.setLayoutManager(new LinearLayoutManager(getContext()));
         ivCurrentUserAvatar = view.findViewById(R.id.ivCurrentUserAvatar);
@@ -61,7 +68,8 @@ public class HomeFragment extends Fragment {
         }
 
         userService = new UserService();
-        chatRepository = new ChatRepository();
+        chatService = new ChatService();
+        chatRepository = new ChatRepository(chatService);
         chatAdapter = new ChatAdapter(getContext(), new ArrayList<>(), currentUid, userService);
         recyclerViewChats.setAdapter(chatAdapter);
 
@@ -114,6 +122,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (chatListener != null) chatListener.remove();
+        if (chatListener != null) {
+            chatListener.remove();
+        }
     }
 }

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.chatapp.R;
 import com.android.chatapp.model.User;
 import com.android.chatapp.util.ImageLoader;
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 

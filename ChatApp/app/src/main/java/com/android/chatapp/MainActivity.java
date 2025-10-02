@@ -11,7 +11,6 @@ import com.android.chatapp.discovery.ui.HomeActivity;
 import com.android.chatapp.util.DataSeeder;
 import com.android.chatapp.util.EmulatorConnection;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
