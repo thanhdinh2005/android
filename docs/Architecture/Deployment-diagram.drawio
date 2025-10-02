@@ -1,0 +1,48 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
+  <diagram name="Page-1" id="Gf2vJ9zuBkooEb7_BwdK">
+    <mxGraphModel dx="1160" dy="785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5ApDeYNsnC_zzb9OXgpp-1" target="5ApDeYNsnC_zzb9OXgpp-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-4" value="&lt;font size=&quot;3&quot;&gt;Kết nối qua port 10.0.0.2&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5ApDeYNsnC_zzb9OXgpp-3">
+          <mxGeometry x="-0.0514" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-1" value="&lt;font size=&quot;3&quot;&gt;Ứng dụng android (.apk) (Android Emulator/Device)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="160" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-6" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=12 12;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5ApDeYNsnC_zzb9OXgpp-2" target="5ApDeYNsnC_zzb9OXgpp-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5ApDeYNsnC_zzb9OXgpp-2" target="5ApDeYNsnC_zzb9OXgpp-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-11" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5ApDeYNsnC_zzb9OXgpp-2" target="5ApDeYNsnC_zzb9OXgpp-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-12" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5ApDeYNsnC_zzb9OXgpp-2" target="5ApDeYNsnC_zzb9OXgpp-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-2" value="&lt;font size=&quot;3&quot;&gt;Docker Container Firebase Emulator&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="160" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-5" value="&lt;font size=&quot;3&quot;&gt;Emulator UI&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-7" value="&lt;font size=&quot;3&quot;&gt;Auth Emulator&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="370" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-8" value="&lt;font size=&quot;3&quot;&gt;Firestore Emulator&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="540" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5ApDeYNsnC_zzb9OXgpp-9" value="&lt;font size=&quot;3&quot;&gt;Storage Emulator&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="710" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
