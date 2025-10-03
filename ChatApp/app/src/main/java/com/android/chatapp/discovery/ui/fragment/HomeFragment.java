@@ -23,7 +23,6 @@ import com.android.chatapp.discovery.ui.HomeActivity;
 import com.android.chatapp.discovery.ui.adapter.ChatAdapter;
 import com.android.chatapp.model.Chat;
 import com.android.chatapp.model.User;
-import com.android.chatapp.notification.service.INotificationService;
 import com.android.chatapp.util.ImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,8 +48,6 @@ public class HomeFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        INotificationService notificationService = ((HomeActivity) requireActivity()).getNotificationService();
-        notificationService.subscribeToTopic("home");
 
         recyclerViewChats = view.findViewById(R.id.recyclerViewChats);
         recyclerViewChats.setLayoutManager(new LinearLayoutManager(getContext()));
